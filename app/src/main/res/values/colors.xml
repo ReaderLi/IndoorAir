@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#499BF7</color>
+    <color name="black">#000000</color>
+
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="gray">#666666</color>
+    <color name="devide_line">#CBCED2</color>
+
+    <color name="lightseagreen">#20b2aa</color><!--亮海蓝色 -->
+
+    <!-- user center 描边颜色 -->
+    <color name="border_clo">#ccc</color>
+    <color name="text_clo">#333</color>
+    <color name="center_blue">#419DE4</color>
+    <color name="user_center_white">#fff</color>
+</resources>

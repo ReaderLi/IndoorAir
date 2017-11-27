@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">IndoorAir</string>
+<!--  MainActivity -->
+    <string name="etEmail_hint">用户名</string>
+    <string name="etPassword_hint">密码</string>
+    <string name="tvLogo_text">Indoor Air</string>
+    <string name="action_sign_in_short">登录</string>
+
+    <string name="search">搜索</string>
+
+    <string name="weatherPage_title">气体数据</string>
+    <string name="sensorPage_title">传感器状态</string>
+    <string name="user_center_title">个人中心</string>
+
+    <string name="weatherCO_name">一氧化碳</string>
+    <string name="weatherCO2_name">二氧化碳</string>
+    <string name="weatherC2H2O_name">甲醛</string>
+
+    <string name="weather_describe1">低</string>
+    <string name="weather_describe2">中</string>
+    <string name="weather_describe3">高</string>
+
+    <string name="unit">mg/ml</string>
+
+    <string name="sensor_connect_stateT">连接正常</string>
+    <string name="sensor_connect_stateF">连接断开</string>
+
+    <string name="user_center_title1">我的心情</string>
+    <string name="user_center_title2">账户资料</string>
+    <string name="user_center_title3">消息通知</string>
+    <string name="title_activity_fragment_switch">FragmentSwitchActivity</string>
+
+</resources>

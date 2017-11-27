@@ -1,0 +1,383 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:background="@color/white"
+    >
+
+    <!--   **************************       -->
+    <!--
+            FATAL EXCEPTION: main
+            Process: com.example.lrd.myapplication, PID: 10836
+           java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.lrd.myapplication/com.withlovee.pairlogin.HttpTest.GasActivity}: android.view.InflateException: Binary XML file line #22: Can't convert value at index 5 to dimension: type=0x12
+           at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2688)
+
+    -->
+    <!--   具体原因，布局文件中的 Relativelayout 中属性
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="@+id/weatherCO_titleIcon"
+                属性相冲-->
+    <!--   **************************       -->
+    <!-- weather condition: CO-->
+    <TextView
+        android:id="@+id/weatherCO_titleIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="245dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/copicture"
+        />
+
+    <TextView
+        android:id="@+id/weatherCO_title"
+        android:layout_width="85dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="250dp"
+        android:text="@string/weatherCO_name"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/weatherCO_blank1"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/weatherCO_title"
+        android:layout_toEndOf="@+id/weatherCO_title" />
+
+            <TextView
+                android:id="@+id/weatherCO_describe_icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:textColor="@color/black"
+                android:background="@drawable/small_data"
+                android:layout_alignTop="@+id/weatherCO_blank1"
+                android:layout_toEndOf="@+id/weatherCO_blank1" />
+            <TextView
+                android:id="@+id/weatherCO_blank2"
+                android:layout_width="3dp"
+                android:layout_height="25dp"
+                android:layout_alignTop="@+id/weatherCO_title"
+                android:layout_toEndOf="@+id/weatherCO_describe_icon" />
+            <TextView
+                android:id="@+id/weatherCO_blackLine1"
+                android:layout_width="2dp"
+                android:layout_height="30dp"
+                android:background="@color/gray"
+                android:layout_alignTop="@+id/weatherCO_title"
+                android:layout_toEndOf="@+id/weatherCO_blank2" />
+            <TextView
+                android:id="@+id/weatherCO_blank3"
+                android:layout_width="3dp"
+                android:layout_height="25dp"
+                android:layout_alignTop="@+id/weatherCO_title"
+                android:layout_toEndOf="@+id/weatherCO_blackLine1" />
+            <TextView
+                android:id="@+id/weatherCO_describe_title"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="@string/weather_describe1"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_alignTop="@+id/weatherCO_blank2"
+                android:layout_toEndOf="@+id/weatherCO_blank3" />
+
+            <TextView
+                android:id="@+id/weatherCO_blank4"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:layout_alignTop="@+id/weatherCO_title"
+                android:layout_toEndOf="@+id/weatherCO_describe_title" />
+
+            <TextView
+                android:id="@+id/weatherCO_data"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="25.1"
+                android:layout_alignTop="@+id/weatherCO_title"
+                android:layout_toEndOf="@+id/weatherCO_blank4" />
+            <TextView
+                android:id="@+id/weatherCO_data_unite"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:text="@string/unit"
+                android:layout_alignBaseline="@+id/weatherCO_data"
+                android:layout_alignBottom="@+id/weatherCO_data"
+                android:layout_toEndOf="@+id/weatherCO_data" />
+
+            <TextView
+                android:id="@+id/weatherCO_devideLine"
+                android:layout_width="350dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="295dp"
+                android:layout_marginLeft="1dp"
+                android:layout_weight="1"
+                android:background="@color/devide_line"
+
+                />
+    <!-- -->
+    <!-- weather condition: CO2-->
+    <TextView
+        android:id="@+id/weatherCO2_titleIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="305dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/co2picture"
+        />
+    <TextView
+        android:id="@+id/weatherCO2_title"
+        android:layout_width="85dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="310dp"
+        android:text="@string/weatherCO2_name"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/weatherCO2_blank1"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/weatherCO2_title"
+        android:layout_toEndOf="@+id/weatherCO2_title" />
+
+    <TextView
+        android:id="@+id/weatherCO2_describe_icon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:textColor="@color/black"
+        android:background="@drawable/middle_data"
+        android:layout_alignTop="@+id/weatherCO2_blank1"
+        android:layout_toEndOf="@+id/weatherCO2_blank1" />
+    <TextView
+        android:id="@+id/weatherCO2_blank2"
+        android:layout_width="3dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/weatherCO2_blank1"
+        android:layout_toEndOf="@+id/weatherCO2_describe_icon" />
+    <TextView
+        android:id="@+id/weatherCO2_blackLine1"
+        android:layout_width="2dp"
+        android:layout_height="30dp"
+        android:background="@color/gray"
+        android:layout_alignTop="@+id/weatherCO2_blank1"
+        android:layout_toEndOf="@+id/weatherCO2_blank2" />
+    <TextView
+        android:id="@+id/weatherCO2_blank3"
+        android:layout_width="3dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/weatherCO2_title"
+        android:layout_toEndOf="@+id/weatherCO2_blackLine1" />
+    <TextView
+        android:id="@+id/weatherCO2_describe_title"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:text="@string/weather_describe2"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/weatherCO2_title"
+        android:layout_toEndOf="@+id/weatherCO2_blank3" />
+    <TextView
+        android:id="@+id/weatherCO2_blank4"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/weatherCO2_title"
+        android:layout_toEndOf="@+id/weatherCO2_describe_title" />
+
+    <TextView
+        android:id="@+id/weatherCO2_data"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="45.1"
+        android:layout_alignTop="@+id/weatherCO2_title"
+        android:layout_toEndOf="@+id/weatherCO2_blank4" />
+    <TextView
+        android:id="@+id/weatherCO2_data_unite"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:text="@string/unit"
+        android:layout_alignBaseline="@+id/weatherCO2_data"
+        android:layout_alignBottom="@+id/weatherCO2_data"
+        android:layout_toEndOf="@+id/weatherCO2_data" />
+
+    <TextView
+        android:id="@+id/weatherCO2_devideLine"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="345dp"
+        android:layout_marginLeft="1dp"
+        android:layout_weight="1"
+        android:background="@color/devide_line"
+        />
+
+    <!-- weather condition: C2H2O-->
+    <TextView
+        android:id="@+id/weatherC2H2O_titleIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="355dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/c2h2opicture"
+        />
+    <TextView
+        android:id="@+id/weatherC2H2O_title"
+        android:layout_width="85dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="360dp"
+        android:text="@string/weatherC2H2O_name"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/weatherC2H2O_blank1"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/weatherC2H2O_title"
+        android:layout_toEndOf="@+id/weatherC2H2O_title" />
+
+    <TextView
+        android:id="@+id/weatherC2H2O_describe_icon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:textColor="@color/black"
+        android:background="@drawable/height_data"
+        android:layout_alignTop="@+id/weatherC2H2O_blank1"
+        android:layout_toEndOf="@+id/weatherC2H2O_blank1" />
+    <TextView
+        android:id="@+id/weatherC2H2O_blank2"
+        android:layout_width="3dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/weatherC2H2O_blank1"
+        android:layout_toEndOf="@+id/weatherC2H2O_describe_icon" />
+    <TextView
+        android:id="@+id/weatherC2H2O_blackLine1"
+        android:layout_width="2dp"
+        android:layout_height="30dp"
+        android:background="@color/gray"
+        android:layout_alignTop="@+id/weatherC2H2O_blank1"
+        android:layout_toEndOf="@+id/weatherC2H2O_blank2" />
+    <TextView
+        android:id="@+id/weatherC2H2O_blank3"
+        android:layout_width="3dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/weatherC2H2O_blank1"
+        android:layout_toEndOf="@+id/weatherC2H2O_blackLine1" />
+    <TextView
+        android:id="@+id/weatherC2H2O_describe_title"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:text="@string/weather_describe3"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/weatherC2H2O_blank1"
+        android:layout_toEndOf="@+id/weatherC2H2O_blank3" />
+
+    <TextView
+        android:id="@+id/weatherC2H2O_blank4"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/weatherC2H2O_blank1"
+        android:layout_toEndOf="@+id/weatherC2H2O_describe_title" />
+
+    <TextView
+        android:id="@+id/weatherC2H2O_data"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="65.1"
+        android:layout_alignTop="@+id/weatherC2H2O_blank1"
+        android:layout_toEndOf="@+id/weatherC2H2O_blank4" />
+    <TextView
+        android:id="@+id/weatherC2H2O_data_unite"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:text="@string/unit"
+        android:layout_alignBaseline="@+id/weatherC2H2O_data"
+        android:layout_alignBottom="@+id/weatherC2H2O_data"
+        android:layout_toEndOf="@+id/weatherC2H2O_data" />
+
+    <TextView
+        android:id="@+id/weatherC2H2O_devideLine"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="395dp"
+        android:layout_marginLeft="1dp"
+        android:layout_weight="1"
+        android:background="@color/devide_line"
+        />
+
+    <!-- three buttons on the bottom-->
+    <!--
+    <Button
+        android:id="@+id/button_gasPage_gas"
+        android:background="@drawable/button_gas_blue"
+        android:layout_above="@+id/button_page_blank3_gas"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/button_page_blank1_gas"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/button_sensorPage_gas"
+        android:layout_toEndOf="@+id/button_gasPage_gas"
+        android:layout_width="90dp" />
+
+    <Button
+        android:id="@+id/button_sensorPage_gas"
+        android:background="@drawable/button_sensor_black"
+        android:layout_toRightOf="@+id/button_page_blank1_gas"
+        android:layout_above="@+id/button_page_blank3_gas"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/button_page_blank2_gas"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/button_gasPage_gas"
+        android:layout_toEndOf="@+id/button_sensorPage_gas"
+        android:layout_width="90dp" />
+
+    <Button
+        android:id="@+id/button_accountPage_gas"
+        android:background="@drawable/button_user_center_black"
+        android:layout_toRightOf="@+id/button_page_blank2_gas"
+        android:layout_above="@+id/button_page_blank3_gas"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/button_page_blank3_gas"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentBottom="true" />-->
+
+</RelativeLayout>
