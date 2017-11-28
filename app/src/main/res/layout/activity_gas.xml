@@ -1,10 +1,8 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
     android:background="@color/white"
     >
@@ -22,13 +20,21 @@
                 android:layout_marginRight="@+id/weatherCO_titleIcon"
                 属性相冲-->
     <!--   **************************       -->
+    <TextView
+        android:id="@+id/gas_tv_bgPicture"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/gas_view_bg"
+        android:layout_marginLeft="35dp" />
+
     <!-- weather condition: CO-->
     <TextView
         android:id="@+id/weatherCO_titleIcon"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="245dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="345dp"
+        android:layout_marginLeft="26dp"
         android:background="@drawable/copicture"
         />
 
@@ -36,8 +42,8 @@
         android:id="@+id/weatherCO_title"
         android:layout_width="85dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginLeft="61dp"
+        android:layout_marginTop="350dp"
         android:text="@string/weatherCO_name"
         android:textColor="@color/black"
         android:textSize="20sp" />
@@ -119,10 +125,10 @@
 
             <TextView
                 android:id="@+id/weatherCO_devideLine"
-                android:layout_width="350dp"
+                android:layout_width="310dp"
                 android:layout_height="1dp"
-                android:layout_marginTop="295dp"
-                android:layout_marginLeft="1dp"
+                android:layout_marginTop="395dp"
+                android:layout_marginLeft="26dp"
                 android:layout_weight="1"
                 android:background="@color/devide_line"
 
@@ -133,16 +139,16 @@
         android:id="@+id/weatherCO2_titleIcon"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="305dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="405dp"
+        android:layout_marginLeft="26dp"
         android:background="@drawable/co2picture"
         />
     <TextView
         android:id="@+id/weatherCO2_title"
         android:layout_width="85dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginLeft="61dp"
+        android:layout_marginTop="410dp"
         android:text="@string/weatherCO2_name"
         android:textColor="@color/black"
         android:textSize="20sp" />
@@ -223,10 +229,10 @@
 
     <TextView
         android:id="@+id/weatherCO2_devideLine"
-        android:layout_width="350dp"
+        android:layout_width="310dp"
         android:layout_height="1dp"
-        android:layout_marginTop="345dp"
-        android:layout_marginLeft="1dp"
+        android:layout_marginTop="445dp"
+        android:layout_marginLeft="26dp"
         android:layout_weight="1"
         android:background="@color/devide_line"
         />
@@ -236,16 +242,16 @@
         android:id="@+id/weatherC2H2O_titleIcon"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="355dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="455dp"
+        android:layout_marginLeft="26dp"
         android:background="@drawable/c2h2opicture"
         />
     <TextView
         android:id="@+id/weatherC2H2O_title"
         android:layout_width="85dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginLeft="61dp"
+        android:layout_marginTop="460dp"
         android:text="@string/weatherC2H2O_name"
         android:textColor="@color/black"
         android:textSize="20sp" />
@@ -327,10 +333,10 @@
 
     <TextView
         android:id="@+id/weatherC2H2O_devideLine"
-        android:layout_width="350dp"
+        android:layout_width="310dp"
         android:layout_height="1dp"
-        android:layout_marginTop="395dp"
-        android:layout_marginLeft="1dp"
+        android:layout_marginTop="495dp"
+        android:layout_marginLeft="26dp"
         android:layout_weight="1"
         android:background="@color/devide_line"
         />
