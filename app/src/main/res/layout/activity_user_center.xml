@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         >
+
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
@@ -31,6 +32,17 @@
             app:civ_border_width="2dp"
             android:layout_centerInParent="true"
             app:civ_border_color="@color/white"/>
+
+        <TextView
+            android:id="@+id/user_center_userName_tv"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="220dp"
+            android:gravity="center"
+            android:textSize="25sp"
+            />
+
 
         <ImageView
             android:id="@+id/user_center_photograph"
@@ -44,27 +56,38 @@
     </RelativeLayout>
 
     <LinearLayout style="@style/wrap_layout"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="270dp"
         android:id="@+id/user_center_linearLin1"
         >
         <!-- 上圆角-->
-        <LinearLayout style="@style/top_layout">
-            <TextView style="@style/usertext" android:text="@string/user_center_title1" />
+        <LinearLayout
+            android:id="@+id/user_center_mood"
+            style="@style/top_layout">
+            <TextView
+                style="@style/usertext"
+                android:text="@string/user_center_title1" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
         <!-- 分割线 -->
         <View style="@style/bg_line"/>
         <!-- 无圆角-->
-        <LinearLayout style="@style/mid_layout">
+        <LinearLayout
+            android:id="@+id/user_center_account"
+            style="@style/mid_layout">
             <TextView style="@style/usertext" android:text="@string/user_center_title2" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
         <View style="@style/bg_line"/>
         <!-- 下圆角-->
-        <LinearLayout style="@style/bottom_layout">
+        <LinearLayout
+            android:id="@+id/user_center_message"
+            style="@style/bottom_layout">
             <TextView style="@style/usertext" android:text="@string/user_center_title3" />
-            <ImageView style="@style/img_arrow"/>
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
     </LinearLayout>

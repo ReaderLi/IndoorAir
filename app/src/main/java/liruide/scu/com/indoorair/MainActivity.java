@@ -33,7 +33,9 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     private Context context;
 
-    private String TAG="LoginActivity";
+    private String TAG="MainActivity";
+
+    private String uNmeKey = "userName";
 
     private String info;
     // private TextView infotv;
@@ -89,6 +91,9 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor> {
                     Log.i(TAG,"onclick!");
                     //为了便于测试，设置为不验证就直接跳转
                     Intent intent = new Intent(MainActivity.this,FragmentSwitchActivity.class);
+                    String userName = mNameET.getText().toString();
+                    Log.i(TAG,"username: "+userName);
+                    intent.putExtra(uNmeKey,userName);
                     startActivity(intent);
 
 
@@ -138,7 +143,7 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor> {
                         startActivity(intent);
                     }
                     else
-                        Toast.makeText(getApplicationContext(),"密码或账户名出错，请重新输入 "+info,
+                        Toast.makeText(getApplicationContext(),"密码或账户名出错，请重新输入 ",
                                 Toast.LENGTH_SHORT).show();
 
                     // infotv.setText(info);

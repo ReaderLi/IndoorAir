@@ -1,5 +1,7 @@
 package liruide.scu.com.indoorair;
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
 
 /**
@@ -19,6 +21,7 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.suke.widget.SwitchButton;
 
 
 public class FragmentSwitchActivity extends FragmentActivity implements GestureDetector.OnGestureListener {
@@ -34,6 +37,7 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
     final int DISTANT=50;
     private ActionBar actionBar;
 
+    private String adaptUNameKey = "userName";
     //tag等于false，即代表底部按钮的背景图片是黑色
     boolean tagFragment0 = false;
     boolean tagFragment1 = false;
@@ -47,14 +51,62 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
         //requestWindowFeature(Window.FEATURE_NO_TITLE);//设置窗口无标题栏
         setContentView(R.layout.activity_fragment_switch);
 
-
         Log.i(TAG,"OnCreate");
+        //获取用户名
+        setUserName();
+        //设置滑动按钮
+        switchButton();
+
         //分别实例化和初始化fragement、lineatlayout、textview
         setfragment();
         setlinearLayouts();
         settextview();
+
         //创建手势检测器
         detector=new GestureDetector(this);
+    }
+
+    /**
+     * 设置是否接受消息
+     */
+    public void switchButton(){
+        com.suke.widget.SwitchButton switchButton = (com.suke.widget.SwitchButton)
+                findViewById(R.id.switch_button);
+
+        switchButton.setChecked(true);
+        switchButton.isChecked();
+        //switchButton.toggle();     //switch state
+        switchButton.toggle(true);//switch with animation
+        switchButton.setShadowEffect(false);//disable shadow effect
+        switchButton.setEnabled(true);//enable button
+        switchButton.setEnableEffect(true);//enable the switch animation
+        switchButton.setOnCheckedChangeListener(new SwitchButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(SwitchButton view, boolean isChecked) {
+                //TODO do your job
+                //when the color become green,isChecked value is true,otherwise,false.
+                Log.i(TAG,"switch button's status:"+isChecked);
+            }
+        });
+    }
+    /**
+    从登录界面获取到用户名,并显示在用户中心界面
+     */
+    public void setUserName(){
+        Intent intent = getIntent();
+        if(intent != null){
+            String userNameValue = intent.getStringExtra("userName");
+            if(userNameValue != null){
+                Log.i(TAG,"userName: "+userNameValue);
+
+                //设置字体
+                Typeface vibeFont = Typeface.createFromAsset(getAssets(), "fonts/GreatVibes-Regular.otf");
+                TextView userNameTV = (TextView) findViewById(R.id.user_center_userName_tv);
+                userNameTV.setTypeface(vibeFont);
+                userNameTV.setText(userNameValue);
+            }
+
+        }
     }
 
     /**初始化fragment*/

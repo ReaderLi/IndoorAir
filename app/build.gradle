@@ -29,9 +29,11 @@ dependencies {
 }
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     compile 'com.makeramen:roundedimageview:2.2.1'
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.github.zcweng:switch-button:0.0.3@aar'
 }
