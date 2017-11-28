@@ -118,6 +118,12 @@
         <item name="android:layout_weight">1</item>
     </style>
 
+    <style name="user_account_text">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/text_clo</item>
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
     <!-- 文本右边箭头样式 -->
     <style name="img_arrow">

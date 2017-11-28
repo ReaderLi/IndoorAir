@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">IndoorAir</string>
-<!--  MainActivity -->
+    <!--  MainActivity -->
     <string name="etEmail_hint">用户名</string>
     <string name="etPassword_hint">密码</string>
     <string name="tvLogo_text">Indoor Air</string>
@@ -26,8 +26,14 @@
     <string name="sensor_connect_stateF">连接断开</string>
 
     <string name="user_center_title1">我的心情</string>
-    <string name="user_center_title2">账户资料</string>
+    <string name="user_center_title2">修改密码</string>
     <string name="user_center_title3">消息通知</string>
+
+    <string name="user_account_username">用户名</string>
+    <string name="user_account_old_password">原密码</string>
+    <string name="user_account_new_password">新密码</string>
+
     <string name="title_activity_fragment_switch">FragmentSwitchActivity</string>
+    <string name="title_activity_user_account">UserAccountActivity</string>
 
 </resources>

@@ -13,6 +13,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.test.suitebuilder.TestMethod;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -22,6 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.suke.widget.SwitchButton;
+
+import org.w3c.dom.Text;
 
 
 public class FragmentSwitchActivity extends FragmentActivity implements GestureDetector.OnGestureListener {
@@ -37,7 +40,8 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
     final int DISTANT=50;
     private ActionBar actionBar;
 
-    private String adaptUNameKey = "userName";
+    private String UNameKey = "userName";
+
     //tag等于false，即代表底部按钮的背景图片是黑色
     boolean tagFragment0 = false;
     boolean tagFragment1 = false;
@@ -64,8 +68,25 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
 
         //创建手势检测器
         detector=new GestureDetector(this);
-    }
 
+        //点击"修改密码"按钮，跳转
+        TextView modifyPwdTV = (TextView) findViewById(R.id.user_center_account_tv);
+        modifyPwdTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+
+                TextView tv = (TextView) findViewById(R.id.user_center_userName_tv);
+                String username = tv.getText().toString();
+
+                Intent intent = new Intent(FragmentSwitchActivity.this,UserAccountActivity.class);
+                intent.putExtra(UNameKey,username);
+                startActivity(intent);
+
+            }
+
+        });
+
+    }
     /**
      * 设置是否接受消息
      */
@@ -95,7 +116,7 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
     public void setUserName(){
         Intent intent = getIntent();
         if(intent != null){
-            String userNameValue = intent.getStringExtra("userName");
+            String userNameValue = intent.getStringExtra(UNameKey);
             if(userNameValue != null){
                 Log.i(TAG,"userName: "+userNameValue);
 

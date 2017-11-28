@@ -16,14 +16,14 @@
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/CustomActionBarTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/CustomActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,13 +31,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".FragmentSwitchActivity"
             android:label="@string/title_activity_fragment_switch"
-            android:theme="@style/secondPageTheme">
-        </activity>
-
+            android:theme="@style/secondPageTheme"></activity>
+        <activity
+            android:name=".UserAccountActivity"
+            android:label="@string/title_activity_user_account"></activity>
     </application>
 
 </manifest>

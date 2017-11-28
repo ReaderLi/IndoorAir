@@ -75,7 +75,9 @@
         <LinearLayout
             android:id="@+id/user_center_account"
             style="@style/mid_layout">
-            <TextView style="@style/usertext" android:text="@string/user_center_title2" />
+            <TextView
+                android:id="@+id/user_center_account_tv"
+                style="@style/usertext" android:text="@string/user_center_title2" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
         <View style="@style/bg_line"/>
