@@ -2,6 +2,8 @@ package liruide.scu.com.indoorair;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Handler;
+import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 
 /**
@@ -19,12 +21,16 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.suke.widget.SwitchButton;
 
 import org.w3c.dom.Text;
+
+import liruide.scu.com.indoorair.WebService.LoginWebService;
 
 
 public class FragmentSwitchActivity extends FragmentActivity implements GestureDetector.OnGestureListener {
@@ -47,7 +53,10 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
     boolean tagFragment1 = false;
     boolean tagFragment2 = false;
 
-    private String TAG="FragmentSwitchActivity";
+    private static String TAG="FragmentSwitchActivity";
+
+    private String gasData;
+    private static Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +95,50 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
 
         });
 
+        attemptConn();
+
+
     }
+
+    /**
+     * 连接服务器获取气体数据
+     */
+    private void attemptConn(){
+        new Thread(new MyThread()).start();
+    }
+
+    /**
+     * 开启线程连接服务器
+     */
+    public class MyThread implements Runnable {
+
+
+        @Override
+        public void run() {
+            gasData = LoginWebService.executeGasDataHttpGet();
+            Log.i(TAG,"gasData is:"+gasData);
+
+            //handler.post(r)其实这样并不会新起线程，只是执行的runnable里的run()方法，
+            // 却没有执行start()方法，所以runnable走的还是UI线程。
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    //打印当前线程,结果是main
+                    Log.i(TAG,"mu current thread is："+Thread.currentThread().getName());
+                    String start = "<body>";
+                    String end="</body>";
+                    int s = gasData.indexOf(start)+start.length();
+                    int e = gasData.indexOf(end);
+                    String data = gasData.substring(s,e);
+                    data = data.replace("\n","");
+                    data = data.replace(" ","");
+                    Log.i(TAG,"data is: "+data);
+                }
+            });
+        }
+    }
+
     /**
      * 设置是否接受消息
      */

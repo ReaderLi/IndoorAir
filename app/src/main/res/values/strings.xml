@@ -13,7 +13,7 @@
     <string name="user_center_title">个人中心</string>
 
     <string name="weatherCO_name">一氧化碳</string>
-    <string name="weatherCO2_name">二氧化碳</string>
+    <string name="weatherCO2_name">煤气</string>
     <string name="weatherC2H2O_name">甲醛</string>
 
     <string name="weather_describe1">低</string>

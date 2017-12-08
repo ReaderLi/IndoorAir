@@ -134,14 +134,14 @@
 
                 />
     <!-- -->
-    <!-- weather condition: CO2-->
+    <!-- weather condition: CH4-->
     <TextView
         android:id="@+id/weatherCO2_titleIcon"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="405dp"
         android:layout_marginLeft="26dp"
-        android:background="@drawable/co2picture"
+        android:background="@drawable/ch4picture"
         />
     <TextView
         android:id="@+id/weatherCO2_title"

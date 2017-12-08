@@ -90,11 +90,11 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                     Log.i(TAG,"onclick!");
                     //为了便于测试，设置为不验证就直接跳转
-                    Intent intent = new Intent(MainActivity.this,FragmentSwitchActivity.class);
+                    /*Intent intent = new Intent(MainActivity.this,FragmentSwitchActivity.class);
                     String userName = mNameET.getText().toString();
                     Log.i(TAG,"username: "+userName);
                     intent.putExtra(uNmeKey,userName);
-                    startActivity(intent);
+                    startActivity(intent);*/
 
 
 
@@ -105,6 +105,12 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor> {
 
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestory called.");
     }
 
     private void attemptLogin() {
@@ -121,7 +127,7 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         @Override
         public void run() {
-            info = LoginWebService.executeHttpGet("LogLet",mNameET.getText().toString(), mPasswordET.getText().toString());
+            info = LoginWebService.executeLoginHttpPost(mNameET.getText().toString(), mPasswordET.getText().toString());
             Log.i("LoginActivity","my return info is :"+info);
 
             //handler.post(r)其实这样并不会新起线程，只是执行的runnable里的run()方法，
@@ -140,11 +146,23 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor> {
                                 Toast.LENGTH_SHORT).show();
                         //验证成功，跳转到相应界面
                         Intent intent = new Intent(MainActivity.this,FragmentSwitchActivity.class);
+                        String userName = mNameET.getText().toString();
+                        Log.i(TAG,"username: "+userName);
+                        intent.putExtra(uNmeKey,userName);
                         startActivity(intent);
+
+                        onDestroy();
                     }
-                    else
-                        Toast.makeText(getApplicationContext(),"密码或账户名出错，请重新输入 ",
+                    else {
+
+                        Toast.makeText(getApplicationContext(), "密码或账户名出错，请重新输入 ",
                                 Toast.LENGTH_SHORT).show();
+                        //清空输入内容
+                        EditText etUName = (EditText) findViewById(R.id.etName);
+                        etUName.setText("");
+                        EditText etUPswd = (EditText) findViewById(R.id.etPassword);
+                        etUPswd.setText("");
+                    }
 
                     // infotv.setText(info);
                 }
@@ -191,7 +209,6 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor> {
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
     }
-
 
 
     private interface ProfileQuery {
