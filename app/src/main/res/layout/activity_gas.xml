@@ -109,7 +109,7 @@
                 android:layout_height="30dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:text="25.1"
+                android:text="0.0"
                 android:layout_alignTop="@+id/weatherCO_title"
                 android:layout_toEndOf="@+id/weatherCO_blank4" />
             <TextView
@@ -134,9 +134,9 @@
 
                 />
     <!-- -->
-    <!-- weather condition: CH4-->
+    <!-- weather condition: Gas-->
     <TextView
-        android:id="@+id/weatherCO2_titleIcon"
+        android:id="@+id/weatherGas_titleIcon"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="405dp"
@@ -144,7 +144,7 @@
         android:background="@drawable/ch4picture"
         />
     <TextView
-        android:id="@+id/weatherCO2_title"
+        android:id="@+id/weatherGas_title"
         android:layout_width="85dp"
         android:layout_height="30dp"
         android:layout_marginLeft="61dp"
@@ -154,81 +154,81 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/weatherCO2_blank1"
+        android:id="@+id/weatherGas_blank1"
         android:layout_width="20dp"
         android:layout_height="40dp"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:layout_alignTop="@+id/weatherCO2_title"
-        android:layout_toEndOf="@+id/weatherCO2_title" />
+        android:layout_alignTop="@+id/weatherGas_title"
+        android:layout_toEndOf="@+id/weatherGas_title" />
 
     <TextView
-        android:id="@+id/weatherCO2_describe_icon"
+        android:id="@+id/weatherGas_describe_icon"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:textColor="@color/black"
-        android:background="@drawable/middle_data"
-        android:layout_alignTop="@+id/weatherCO2_blank1"
-        android:layout_toEndOf="@+id/weatherCO2_blank1" />
+        android:background="@drawable/small_data"
+        android:layout_alignTop="@+id/weatherGas_blank1"
+        android:layout_toEndOf="@+id/weatherGas_blank1" />
     <TextView
-        android:id="@+id/weatherCO2_blank2"
+        android:id="@+id/weatherGas_blank2"
         android:layout_width="3dp"
         android:layout_height="25dp"
-        android:layout_alignTop="@+id/weatherCO2_blank1"
-        android:layout_toEndOf="@+id/weatherCO2_describe_icon" />
+        android:layout_alignTop="@+id/weatherGas_blank1"
+        android:layout_toEndOf="@+id/weatherGas_describe_icon" />
     <TextView
-        android:id="@+id/weatherCO2_blackLine1"
+        android:id="@+id/weatherGas_blackLine1"
         android:layout_width="2dp"
         android:layout_height="30dp"
         android:background="@color/gray"
-        android:layout_alignTop="@+id/weatherCO2_blank1"
-        android:layout_toEndOf="@+id/weatherCO2_blank2" />
+        android:layout_alignTop="@+id/weatherGas_blank1"
+        android:layout_toEndOf="@+id/weatherGas_blank2" />
     <TextView
-        android:id="@+id/weatherCO2_blank3"
+        android:id="@+id/weatherGas_blank3"
         android:layout_width="3dp"
         android:layout_height="25dp"
-        android:layout_alignTop="@+id/weatherCO2_title"
-        android:layout_toEndOf="@+id/weatherCO2_blackLine1" />
+        android:layout_alignTop="@+id/weatherGas_title"
+        android:layout_toEndOf="@+id/weatherGas_blackLine1" />
     <TextView
-        android:id="@+id/weatherCO2_describe_title"
+        android:id="@+id/weatherGas_describe_title"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:text="@string/weather_describe2"
+        android:text="@string/weather_describe1"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:layout_alignTop="@+id/weatherCO2_title"
-        android:layout_toEndOf="@+id/weatherCO2_blank3" />
+        android:layout_alignTop="@+id/weatherGas_title"
+        android:layout_toEndOf="@+id/weatherGas_blank3" />
     <TextView
-        android:id="@+id/weatherCO2_blank4"
+        android:id="@+id/weatherGas_blank4"
         android:layout_width="20dp"
         android:layout_height="40dp"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:layout_alignTop="@+id/weatherCO2_title"
-        android:layout_toEndOf="@+id/weatherCO2_describe_title" />
+        android:layout_alignTop="@+id/weatherGas_title"
+        android:layout_toEndOf="@+id/weatherGas_describe_title" />
 
     <TextView
-        android:id="@+id/weatherCO2_data"
+        android:id="@+id/weatherGas_data"
         android:layout_width="40dp"
         android:layout_height="30dp"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="45.1"
-        android:layout_alignTop="@+id/weatherCO2_title"
-        android:layout_toEndOf="@+id/weatherCO2_blank4" />
+        android:text="0.0"
+        android:layout_alignTop="@+id/weatherGas_title"
+        android:layout_toEndOf="@+id/weatherGas_blank4" />
     <TextView
-        android:id="@+id/weatherCO2_data_unite"
+        android:id="@+id/weatherGas_data_unite"
         android:layout_width="50dp"
         android:layout_height="20dp"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:text="@string/unit"
-        android:layout_alignBaseline="@+id/weatherCO2_data"
-        android:layout_alignBottom="@+id/weatherCO2_data"
-        android:layout_toEndOf="@+id/weatherCO2_data" />
+        android:layout_alignBaseline="@+id/weatherGas_data"
+        android:layout_alignBottom="@+id/weatherGas_data"
+        android:layout_toEndOf="@+id/weatherGas_data" />
 
     <TextView
-        android:id="@+id/weatherCO2_devideLine"
+        android:id="@+id/weatherGas_devideLine"
         android:layout_width="310dp"
         android:layout_height="1dp"
         android:layout_marginTop="445dp"
@@ -270,7 +270,7 @@
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:textColor="@color/black"
-        android:background="@drawable/height_data"
+        android:background="@drawable/small_data"
         android:layout_alignTop="@+id/weatherC2H2O_blank1"
         android:layout_toEndOf="@+id/weatherC2H2O_blank1" />
     <TextView
@@ -296,7 +296,7 @@
         android:id="@+id/weatherC2H2O_describe_title"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:text="@string/weather_describe3"
+        android:text="@string/weather_describe1"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:layout_alignTop="@+id/weatherC2H2O_blank1"
@@ -317,7 +317,7 @@
         android:layout_height="30dp"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="65.1"
+        android:text="0.0"
         android:layout_alignTop="@+id/weatherC2H2O_blank1"
         android:layout_toEndOf="@+id/weatherC2H2O_blank4" />
     <TextView

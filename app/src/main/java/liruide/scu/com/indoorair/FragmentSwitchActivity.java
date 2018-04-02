@@ -1,7 +1,9 @@
 package liruide.scu.com.indoorair;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
@@ -16,6 +18,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.test.suitebuilder.TestMethod;
+import android.text.Layout;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -23,6 +26,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +59,7 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
 
     private static String TAG="FragmentSwitchActivity";
 
-    private String gasData;
+    private String airData;
     private static Handler handler = new Handler();
 
     @Override
@@ -115,8 +119,8 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
 
         @Override
         public void run() {
-            gasData = LoginWebService.executeGasDataHttpGet();
-            Log.i(TAG,"gasData is:"+gasData);
+            airData = LoginWebService.executeGasDataHttpGet();
+            Log.i(TAG,"gasData is:"+airData);
 
             //handler.post(r)其实这样并不会新起线程，只是执行的runnable里的run()方法，
             // 却没有执行start()方法，所以runnable走的还是UI线程。
@@ -126,16 +130,146 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
 
                     //打印当前线程,结果是main
                     Log.i(TAG,"mu current thread is："+Thread.currentThread().getName());
-                    String start = "<body>";
-                    String end="</body>";
-                    int s = gasData.indexOf(start)+start.length();
-                    int e = gasData.indexOf(end);
-                    String data = gasData.substring(s,e);
-                    data = data.replace("\n","");
-                    data = data.replace(" ","");
-                    Log.i(TAG,"data is: "+data);
+                    //获取气体数据
+                    getAirData(airData);
+
+
+
                 }
             });
+        }
+    }
+
+    /**
+     * 获取服务端气体数据和传感器状态
+     * @param Data
+     */
+    public void getAirData(String Data){
+
+        String start = "<body>";
+        String end="</body>";
+        String CoTag="CO";
+        String GasTag="Gas";
+        String HchoTag="HCHO";
+
+        String CoData;
+        String GasData;
+        String HchoData;
+
+        String CoState;
+        String GasState;
+        String HchoState;
+
+        Resources resources=getBaseContext().getResources();
+        Drawable smallDrawable;
+
+        //从获取到的服务端的网页截取body节点中的内容
+        int s = Data.indexOf(start)+start.length();
+        int e = Data.indexOf(end);
+        String totalData = Data.substring(s,e);
+        totalData = totalData.replace("\n","");
+        totalData = totalData.replace(" ","");
+        Log.i(TAG,"totalData is: "+totalData);
+        //totalData is: CO581Gas578HCHO23COFalseGasFalseHCHOFalse
+
+        //从totalData中截取传感器数据
+        //int indexOf(int ch,int fromIndex)函数：就是字符ch在字串fromindex位后出现的第一个位置.没有找到返加-1
+        s = totalData.indexOf(CoTag,0);
+        e = totalData.indexOf(CoTag,2);
+        String sensorData = totalData.substring(s,e);
+        Log.i(TAG,"sensor data is: "+sensorData);
+        CoData = sensorData.substring(sensorData.indexOf(CoTag)+CoTag.length(),sensorData.indexOf(GasTag));
+        GasData = sensorData.substring(sensorData.indexOf(GasTag)+GasTag.length(),sensorData.indexOf(HchoTag));
+        HchoData = sensorData.substring(sensorData.indexOf(HchoTag)+HchoTag.length());
+        Log.i(TAG,"CoData is: "+CoData+",GasData is: "+GasData+",HchoData is: "+HchoData);
+
+        //从totalData中截取传感器连接状态
+        s = e;
+        String sensorState = totalData.substring(s);
+        Log.i(TAG,"sensor state is: "+sensorState);
+        CoState = sensorState.substring(sensorState.indexOf(CoTag)+CoTag.length(),sensorState.indexOf(GasTag));
+        GasState = sensorState.substring(sensorState.indexOf(GasTag)+GasTag.length(),sensorState.indexOf(HchoTag));
+        HchoState = sensorState.substring(sensorState.indexOf(HchoTag)+HchoTag.length());
+        Log.i(TAG,"CoState is: "+CoState+",GasState is: "+GasState+",HchoState is: "+HchoState);
+
+        //设置CO的气体数据
+        TextView Co_data__tv= (TextView) findViewById(R.id.weatherCO_data);
+        Co_data__tv.setText(CoData);
+        TextView CO_title_tv = (TextView) findViewById(R.id.weatherCO_describe_title);
+        TextView CO_icon_tv = (TextView) findViewById(R.id.weatherCO_describe_icon);
+        setDataIcon(CoData,CO_title_tv,CO_icon_tv);
+
+        //设置CO传感器连接状态
+        TextView Co_state_tv = (TextView) findViewById(R.id.sensorCO_describe_title);
+        TextView Co_sensor_state_tv = (TextView) findViewById(R.id.sensorCO_describe_icon);
+        if(CoState.equals("False")){
+            Co_state_tv.setText("连接断开");
+            smallDrawable=resources.getDrawable(R.drawable.sensor_break_state_icon);
+            Co_sensor_state_tv.setBackground(smallDrawable);
+
+        }else{
+            Co_state_tv.setText("连接正常");
+            smallDrawable=resources.getDrawable(R.drawable.sensor_connect_state_icon);
+            Co_sensor_state_tv.setBackground(smallDrawable);
+        }
+
+
+        TextView Gas_data_tv = (TextView) findViewById(R.id.weatherGas_data);
+        Gas_data_tv.setText(GasData);
+        TextView Gas_title_tv = (TextView) findViewById(R.id.weatherGas_describe_title);
+        TextView Gas_icon_tv = (TextView) findViewById(R.id.weatherGas_describe_icon);
+        setDataIcon(GasData,Gas_title_tv,Gas_icon_tv);
+
+        TextView Gas_state_tv = (TextView) findViewById(R.id.sensorCO2_describe_title);
+        TextView Gas_sensor_state_tv = (TextView) findViewById(R.id.sensorCO2_describe_icon);
+        if(CoState.equals("False")){
+            Gas_state_tv.setText("连接断开");
+            smallDrawable=resources.getDrawable(R.drawable.sensor_break_state_icon);
+            Gas_sensor_state_tv.setBackground(smallDrawable);
+        }else{
+            Gas_state_tv.setText("连接正常");
+            smallDrawable=resources.getDrawable(R.drawable.sensor_connect_state_icon);
+            Gas_sensor_state_tv.setBackground(smallDrawable);
+        }
+
+        TextView C2H2O_data_tv = (TextView) findViewById(R.id.weatherC2H2O_data);
+        C2H2O_data_tv.setText(HchoData);
+        TextView C2H2O_title_tv = (TextView) findViewById(R.id.weatherC2H2O_describe_title);
+        TextView C2H2O_icon_tv = (TextView) findViewById(R.id.weatherC2H2O_describe_icon);
+        setDataIcon(HchoData,C2H2O_title_tv,C2H2O_icon_tv);
+
+        TextView C2H2O_state_tv = (TextView) findViewById(R.id.sensorC2H2O_describe_title);
+        TextView C2H2O_sensor_state_tv = (TextView) findViewById(R.id.sensorC2H2O_describe_icon);
+        if(CoState.equals("False")){
+            C2H2O_state_tv.setText("连接断开");
+            smallDrawable=resources.getDrawable(R.drawable.sensor_break_state_icon);
+            C2H2O_sensor_state_tv.setBackground(smallDrawable);
+        }else{
+            C2H2O_state_tv.setText("连接正常");
+            smallDrawable=resources.getDrawable(R.drawable.sensor_connect_state_icon);
+            C2H2O_sensor_state_tv.setBackground(smallDrawable);
+        }
+
+
+    }
+
+    public void setDataIcon(String myData,TextView title,TextView icon){
+        //传感器数据区间为： 低： 0-20  中：21-80  高：81-300 极高:301-600
+        double num = Double.valueOf(myData);
+        Resources resources=getBaseContext().getResources();
+
+        if(num <= 20.0){
+            title.setText(R.string.weather_describe1);
+            Drawable smallDrawable=resources.getDrawable(R.drawable.small_data);
+            icon.setBackground(smallDrawable);
+        }else if(num >20.0 && num <= 80.0){
+            title.setText(R.string.weather_describe2);
+            Drawable middleDrawable = resources.getDrawable(R.drawable.middle_data);
+            icon.setBackground(middleDrawable);
+        }else{
+            title.setText(R.string.weather_describe3);
+            Drawable heightDrawable = resources.getDrawable(R.drawable.height_data);
+            icon.setBackground(heightDrawable);
         }
     }
 
@@ -224,6 +358,9 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
     {
 
         Log.i(TAG,"LayoutOnclick");
+        //获取数据更新
+        attemptConn();
+
         //resetlaybg();//每次点击都重置linearLayouts的背景、textViews字体颜色
         switch (v.getId()) {
             case R.id.lay1:
@@ -352,6 +489,9 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
         {
             if(arg1.getX()>arg0.getX()+DISTANT)
             {
+                //获取数据更新
+                attemptConn();
+
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                         .show(fragments[1]).commit();
                 //linearLayouts[1].setBackgroundResource(R.color.lightseagreen);
@@ -383,6 +523,9 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
         {
             if(arg1.getX()>arg0.getX()+DISTANT)
             {
+                //获取数据更新
+                attemptConn();
+
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                         .show(fragments[2]).commit();
                 //linearLayouts[2].setBackgroundResource(R.color.lightseagreen);
@@ -409,6 +552,9 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
             }
             else if(arg0.getX()>arg1.getX()+DISTANT)
             {
+                //获取数据更新
+                attemptConn();
+
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                         .show(fragments[0]).commit();
                 //linearLayouts[0].setBackgroundResource(R.color.lightseagreen);
@@ -441,6 +587,9 @@ public class FragmentSwitchActivity extends FragmentActivity implements GestureD
         {
             if(arg0.getX()>arg1.getX()+DISTANT)
             {
+                //获取数据更新
+                attemptConn();
+
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                         .show(fragments[1]).commit();
                 //linearLayouts[1].setBackgroundResource(R.color.black);

@@ -20,4 +20,6 @@ public class GasFragment extends Fragment {
         // TODO Auto-generated method stub
         return inflater.inflate(R.layout.activity_gas, container, false);
     }
+
+
 }
